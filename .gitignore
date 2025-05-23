@@ -1,0 +1,85 @@
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# --- System folders ---
+$RECYCLE.BIN/
+*.bak
+*.tmp
+
+# --- IDEs and Editors ---
+.vscode/
+.idea/
+.vs/
+
+# --- Logs ---
+*.log
+logs/
+*.tlog
+
+# --- Node.js ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# --- Environment Files ---
+.env
+.env.*  # Like .env.local, .env.production
+
+# --- Build Output ---
+bin/
+obj/
+build/
+publish/
+dist/
+out/
+
+# --- ASP.NET Core ---
+appsettings.*.json
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- NuGet ---
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# --- Windows Installer Files ---
+*.cab
+*.msi
+*.msm
+*.msp
+
+# --- Visual Studio Code workspace storage ---
+.vscode-test/
+
+# --- JetBrains Rider ---
+.idea/
+
+# --- Coverage Reports ---
+coverage/
+*.lcov
+
+# --- Misc ---
+*.swp
+*.swn
+*.swo
+*.swn
+*.orig
+*.rej
+
+# --- Optional: Exclude compiled static assets ---
+*.css.map
+*.js.map
