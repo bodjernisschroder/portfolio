@@ -1,0 +1,114 @@
+﻿@page "/login"
+@layout MinimalLayout
+@inject NavigationManager NavigationManager
+@inject IHttpClientFactory ClientFactory
+@inject JwtAuthenticationStateProvider AuthProvider
+@inject IJSRuntime JS
+
+@rendermode InteractiveServer
+
+@using System.ComponentModel.DataAnnotations
+@using Gotorz.Components.Layout
+@using Gotorz.Models
+@using Gotorz.Services
+@using Microsoft.AspNetCore.Components.Authorization
+
+<PageTitle>Login</PageTitle>
+
+<div class="d-flex flex-column min-vh-100 w-100">
+    <!-- Top Section: Centered Return Link -->
+    <div class="p-3 text-center w-100">
+        <a href="/" class="fw-bold">⬅️ Return to homepage</a>
+    </div>
+
+    <!-- Middle Section: Centered Login Box -->
+    <div class="flex-grow-1 d-flex justify-content-center align-items-center w-100">
+        <div class="p-5 rounded shadow"
+             style="background-color: white; border: 1px solid lightgrey; max-width: 400px; width: 100%;">
+            <h2 class="text-center fw-bold mb-4" style="color: #f8b500;">Login to Gotorz</h2>
+            <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="SignupForm">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <InputText class="form-control" type="email" @bind-Value="loginModel.Email" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <InputText class="form-control" type="password" @bind-Value="loginModel.Password" />
+                </div>
+
+                <button class="btn btn-warning w-100 fw-bold" type="submit">Login</button>
+
+                <div class="text-center mt-3">
+                    <a href="#">Forgot your password?</a>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="/signup">Not a member yet? Create a new account</a>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+
+    <!-- Bottom Section: Full-Width Footer -->
+    <footer class="w-100">
+        <Footer />
+    </footer>
+</div>
+
+@code {
+    private LoginModel loginModel = new();
+
+    // Method for processing login form submission,
+    // sends login credentials as JSON to the API endpoint, 
+    // checks if the login request was successful (200 OK), 
+    // reads the response body and deserializes it into AuthResponseDto which contains the token, 
+    // saves the JWT token into sessionStorage (local storage) using JS interop, 
+    // updates the authentication state provider with the new token, 
+    // gets the claims of the current user, 
+    // and redirects according to the user's role
+    private async Task HandleLogin()
+    {
+        var httpClient = ClientFactory.CreateClient("AuthAndUserAPI");
+        var response = await httpClient.PostAsJsonAsync("api/auth/login", loginModel);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var result = await response.Content.ReadFromJsonAsync<AuthResponseDto>();
+
+            if (!string.IsNullOrWhiteSpace(result?.Token))
+            {
+                Console.WriteLine($"🔑 Token received: {result.Token}");
+
+                // Save token in sessionStorage
+                await JS.InvokeVoidAsync("sessionStorage.setItem", "authToken", result.Token);
+
+                // Update auth state
+                await AuthProvider.MarkUserAsAuthenticated(result.Token);
+
+                // Get claims
+                var authState = await AuthProvider.GetAuthenticationStateAsync();
+                var user = authState.User;
+
+                if (user.IsInRole("Admin"))
+                {
+                    NavigationManager.NavigateTo("/admin-dashboard");
+                }
+                else
+                {
+                    NavigationManager.NavigateTo("/dashboard");
+                }
+            }
+            else
+            {
+                Console.WriteLine("❌ Empty token received");
+            }
+        }
+        else
+        {
+            Console.WriteLine("❌ Login failed");
+        }
+    }
+}

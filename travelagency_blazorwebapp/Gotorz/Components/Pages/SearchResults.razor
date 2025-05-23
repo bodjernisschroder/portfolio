@@ -1,0 +1,150 @@
+﻿@page "/searchresults"
+@using System.Globalization
+@using System.Text.Json
+@using System.Web
+@using Gotorz.Services
+@using Gotorz.Models
+@using Gotorz.Services
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+@inject ITravelService TravelService
+@rendermode InteractiveServer
+
+<h3 class="mt-4 text-center">Search Results</h3>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-11 col-xl-10 text-left">
+
+            @if (isLoading)
+            {
+                <p>Searching for trips from <strong>@from</strong> to <strong>@to</strong>...</p>
+                <div class="spinner"></div>
+            }
+            else if (travelPackages.Count == 0)
+            {
+                <p>No results found for <strong>@to</strong>.</p>
+            }
+            else
+            {
+                <ul class="list-group mt-3 mb-2">
+                    @foreach (var package in travelPackages)
+                    {
+                        <li class="list-group-item shadow p-5 mb-5 bg-white rounded-4">
+                            <div class="row g-4">
+                                <!-- Flight Details -->
+                                <div class="col-md-4 border-end">
+                                    <h5 class="mb-3 text-primary fw-bold">Flight Details</h5>
+                                    <p><strong>From:</strong> @package.FromLocation</p>
+                                    <p><strong>To:</strong> @package.ToLocation</p>
+                                    <p><strong>Departure:</strong> @DateTime.Parse(package.DepartureDate).ToString("d MMM yyyy")</p>
+                                    <p><strong>Return:</strong> @DateTime.Parse(package.ReturnDate).ToString("d MMM yyyy")</p>
+                                    <p><strong>Carrier:</strong> @package.FlightCarrier</p>
+                                    <p><strong>Duration:</strong> @package.FlightDurationMinutes minutes</p>
+                                    <p><strong>Stops:</strong> @(package.FlightStops == 0 ? "Direct Flight" : $"{package.FlightStops} Stop(s)")</p>
+                                    <p><strong>Flight Price:</strong> @package.FlightPrice.ToString("C2", CultureInfo.GetCultureInfo("en-IE"))</p>
+                                </div>
+
+                                <!-- Hotel Details -->
+                                <div class="col-md-4 border-end">
+                                    <h5 class="mb-3 text-success fw-bold">Hotel Details</h5>
+                                    <p><strong>Hotel:</strong> @package.HotelName</p>
+                                    <p><strong>Hotel Price:</strong> @package.HotelPrice.ToString("C2", CultureInfo.GetCultureInfo("en-IE"))</p>
+                                </div>
+
+                                <!-- Hotel Image -->
+                                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                    @if (!string.IsNullOrEmpty(package.HotelPhotoUrl))
+                                    {
+                                        <img src="@package.HotelPhotoUrl" alt="Hotel Photo" class="img-fluid rounded shadow-sm" style="max-height: 320px; object-fit: cover;" />
+                                    }
+                                    else
+                                    {
+                                        <p>No image available.</p>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Package Summary -->
+                            <div class="row mt-5 pt-4 px-4 border-top bg-light rounded-3">
+                                <div class="col-12 text-center py-4">
+                                    <h4 class="text-dark fw-bold mb-3">Package Summary</h4>
+                                    <p><strong>Number of Nights:</strong> @package.NumberOfNights night(s)</p>
+                                    <p class="fw-bold fs-2 text-success mb-4">
+                                        Total Price: @package.TotalPrice.ToString("C2", CultureInfo.GetCultureInfo("en-IE"))
+                                    </p>
+                                    <button class="btn btn-warning fw-bold px-5 py-3">Order Travel Package</button>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+@code {
+    private string from = string.Empty;
+    private string to = string.Empty;
+    private DateTime departureDate;
+    private DateTime returnDate;
+    private bool isLoading = true;
+    private bool hasLoaded = false;
+    private List<TravelPackage> travelPackages = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !hasLoaded)
+        {
+            hasLoaded = true;
+
+            var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+            var queryParams = HttpUtility.ParseQueryString(uri.Query);
+
+            from = queryParams["from"] ?? "";
+            to = queryParams["to"] ?? "";
+            DateTime.TryParse(queryParams["departure"], out departureDate);
+            DateTime.TryParse(queryParams["returnFlight"], out returnDate);
+
+            if (!string.IsNullOrWhiteSpace(from) &&
+                !string.IsNullOrWhiteSpace(to) &&
+                departureDate != default &&
+                returnDate != default)
+            {
+                isLoading = true;
+                StateHasChanged(); // 🔁 Force re-render to show the spinner
+
+                travelPackages = await TravelService.SearchTravelPackagesAsync(from, to, departureDate, returnDate);
+
+                isLoading = false;
+                StateHasChanged(); // 🔁 Trigger UI update when done
+            }
+        }
+    }
+}
+
+<style>
+    .spinner {
+        margin: 20px auto;
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #072f62;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>

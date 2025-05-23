@@ -1,0 +1,21 @@
+﻿@using Gotorz.Services
+@inject JwtAuthenticationStateProvider AuthProvider
+
+@* Wraps <Routes /> in a cascading authentication context *@
+<CascadingAuthenticationState>
+    <Routes />
+</CascadingAuthenticationState>
+
+@code {
+
+    // Method that runs after initial render, 
+    // and calls the TryLoadUserFromSessionAsync
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Console.WriteLine("🚀 AppRoot triggering TryLoadUserFromSessionAsync()");
+            await AuthProvider.TryLoadUserFromSessionAsync();
+        }
+    }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Fishclicker v2</title>
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            
+            <div class="statBox">
+                <div>Fishclicker v2</div>
+                <div id="timeElapsed">Time elapsed: 00:00:00</div>
+                <div id="fishLeft">% of ocean fished: 0.0000000000%</div><hr>
+                <div id="totalFish">Total fish caught: 0</div>
+                <div id="fishPerSec">Fish per second: 0</div>
+                <div id="currentFishingRod">Rod: Bare hands</div>
+                <div id="currentHook">Hook: Damp piece of wood</div>
+                <div id="currentFishPerClick">1 fish/click </div>
+                <button class="button" id="btnCatchFish">Catch fish</button> press and hold to auto-catch<hr>
+                <div id="moneyTotal">Money: $100.00</div>
+                <div id="unsoldFish">Unsold fish: 0</div>
+                <div id="anglerFishPrice">Fish price: $0.00 (range 0.50-2.50) - 52s</div>
+                <div>% of unsold fish to sell:</div>
+                <div>
+                    <button class="button" id="btnSellFish">Sell fish</button>
+                    <input type="range" min="1" max="100" value="100" class="slider" id="fishSellSlider">
+                    <span id="percentageToSell">100%</span>
+                </div>
+                
+                <hr>
+                <div id="baitTotalCounter">Bait left: 100</div>     
+                <div id="anglerBaitInfo">Buy 20 bait for $10</div>
+                <button class="button" id="btnBuyBait">+1</button>
+                <button class="button" id="btnBuyBaitTen">+10</button>
+                <button class="button" id="btnBuyBaitHundred">+100</button>
+                <button class="button" id="btnBuyBaitAll">All</button><hr>
+                <div id="anglerInfo">
+                    Hire angler(s) - $100 each<br>
+                    (Catches 1 fish per second)<br>
+                </div>
+                <button class="button" id="btn1Angler">+1</button>
+                <button class="button" id="btn10Angler">+10</button>
+                <button class="button" id="btn100Angler">+100</button>
+                <button class="button" id="btnAllAngler">All</button><br>
+                <div id="anglerHireCount">Anglers hired: 0</div>
+                <div id="anglerFpsCount">Anglers catch 1 fish per second each</div>
+                
+            </div>
+
+        </div>
+        <div class="column">
+        
+            <div class="upgradeBox hidden" id="cheekyChumChest">Cheeky Chum Chest - $500<br>Get 1.5x more bait per purchase</div>
+            <div class="upgradeBox hidden" id="wigglyWormWarehouse">Wiggly Worm Warehouse - $1,000<br>Get 1.5x more bait per purchase</div>
+            <div class="upgradeBox hidden" id="wealthyWaterway">Wealthy Waterway - $2,500<br>Fish price range: $0.75-$2.25</div>
+            <div class="upgradeBox hidden" id="plasticHook">Plastic Hook - $2,500<br>25% chance to get 10x fish on click</div>
+            <div class="upgradeBox hidden" id="feebleTwig">Feeble Twig - $5,000<br>You now get 5 fish per click</div>
+            <div class="upgradeBox hidden" id="craftyCrabCache">Crafty Crab Cache - $8,500<br>Get 1.5x more bait per purchase</div>
+            <div class="upgradeBox hidden" id="slightlyBentStick">Slightly Bent Stick - $20,500<br>You now get 25 fish per click</div>
+            <div class="upgradeBox hidden" id="nimbleNoodleRod">Nimble Noodle Rod - $250,000<br>You now get 100 fish per click</div>
+            <div class="upgradeBox hidden" id="goldenGulf">Golden Gulf - $3,000,000<br>Fish price range: $1.75-$3.25</div>
+            <div class="upgradeBox hidden" id="profitablePond">Profitable Pond - $157,500<br>Fish price range: $1.25-$2.75</div>
+            <div class="upgradeBox hidden" id="funkyFishFridge">Funky Fish Fridge - $62,500<br>Get 1.5x more bait per purchase</div>
+            <div class="upgradeBox hidden" id="ironHook">Iron Hook - $62,500<br>25% chance to get 25x fish on click</div>
+            <div class="upgradeBox hidden" id="bargainBaitBasket">Bargain Bait Basket - $1,100,000<br>Get 1.5x more bait per purchase</div>
+            <div class="upgradeBox hidden" id="slickShrimpSilo">Slick Shrimp Silo - $1,552,500<br>Get 1.5x more bait per purchase</div>
+            <div class="upgradeBox hidden" id="platinumHook">Platinum Hook - $3,375,000<br>25% chance to get 250x fish on click</div>
+            <div class="upgradeBox hidden" id="efficientNetting">Efficient Netting - $800,000<br>Get 1.5x more bait per purchase</div>
+            <div class="upgradeBox hidden" id="captainsCap">Captain's Cap - $110,000<br>Anglers now catch 2 fish per second</div>
+            <div class="upgradeBox hidden" id="turtleTrawler">Turtle Trawler - $10,000,000<br>Anglers catch 2 more fish per second</div>
+            <div class="upgradeBox hidden" id="marlinMaster">Marlin Master - $6,000,000<br>You now get 500 fish per click</div>
+            <div class="upgradeBox hidden" id="luckyLighthouse">Lucky Lighthouse - $1,300,000<br>Anglers now catch 3 fish per second</div>
+            <div class="upgradeBox hidden" id="krakenKatch">Kraken Katch - $170,000,000<br>Anglers now catch 5 fish per second</div>
+            <div class="upgradeBox hidden" id="fishfinder500">Fishfinder 500 - $1,980,000<br>Anglers now catch 4 fish per second</div>
+            <div class="upgradeBox hidden" id="seafarersSail">Seafarer's Sail - $2,500,000<br>Anglers catch 2 more fish per second</div>
+            <div class="upgradeBox hidden" id="barnacleBuster">Barnacle Buster - $651,250,000,000<br>Anglers now catch 20 fish per second</div>
+            <div class="upgradeBox hidden" id="whaleWhisperer">Whale Whisperer - $500,000,000<br>Anglers now catch 6 fish per second</div>
+            <div class="upgradeBox hidden" id="sharkShooter">Shark Shooter - $65,750,000<br>You now get 1,000 fish per click</div>
+            <div class="upgradeBox hidden" id="coralCrusher">Coral Crusher - $1,300,000,000<br>Anglers now catch 7 fish per second</div>
+            <div class="upgradeBox hidden" id="autoBaiter">Master-Baiter - $6,000,000<br>Bait is free & automatically replenished</div>
+            <div class="upgradeBox hidden" id="deepDiveDynamo">Deep Dive Dynamo - $1,900,000,000<br>Anglers now catch 8 fish per second</div>
+            <div class="upgradeBox hidden" id="soggyLog">Soggy Log - $250,000,000<br>Anglers catch 2 more fish per second</div>
+            <div class="upgradeBox hidden" id="turboTackleTitan">Turbo Tackle Titan - $50,000,000<br>Anglers catch 2 more fish per second</div>
+            <div class="upgradeBox hidden" id="dinkyDinghy">Dinky Dinghy - $700,000,000<br>Anglers catch 2 more fish per second</div>
+            <div class="upgradeBox hidden" id="merryMariner">Merry Mariner - $251,250,000,000<br>Anglers now catch 15 fish per second</div>
+            <div class="upgradeBox hidden" id="lavishLagoon">Lavish Lagoon - $493,750,000<br>Fish price range: $2.25-$3.75</div>
+            <div class="upgradeBox hidden" id="valiantVoyager">Valiant Voyager - $4,500,000,000<br>Anglers now catch 9 fish per second</div>
+            <div class="upgradeBox hidden" id="nauticalNemesis">Nautical Nemesis - $7,750,000,000<br>Anglers now catch 10 fish per second</div>
+            <div class="upgradeBox hidden" id="diamondHook">Diamond Hook - $340,000,000<br>25% chance to get 1000x fish on click</div>
+            <div class="upgradeBox hidden" id="omegaFishblaster6000">Omega Fishblaster 6000 - $330,000,000<br>You now get 200,000 fish per click</div>
+            <div class="upgradeBox hidden" id="diamondDepths">Diamond Depths - $500,000,000<br>Fish price range: $2.75-$4.25</div>
+            
+        </div>
+        
+    </div>
+
+    
+    <pre id="asciiSea">        ,-.
+      _n_  \ 
+     (---)  `-._______________________________________________________________________________________________________________
+  ~^~^~|~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^
+       |                                          <')"={                  }-<('c 
+       |          }<('>              }-<('c                                         &gt;&lt;&gt; 
+       |    &gt;&lt;&gt;                                 }<('>             }<('>       
+       |
+       |                   }-<('c                           <')"={          }-<('c
+       |
+       |      &lt;&gt;&lt;                        <')"={                        }-<('c 
+       |                                                &lt;&gt;&lt;
+       |             }<('>             }<('>                                <')"={
+       J   <')"={                                       }<('></pre>
+
+    <script src="app.js"></script>
+</body>
+</html>

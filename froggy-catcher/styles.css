@@ -1,0 +1,292 @@
+#outerBox{
+    display: flex;
+}
+
+#gamescreen{
+    height: 650px;
+    width: 650px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid rgb(70, 70, 70);
+    background-image: url("images/grass-background.jpg");
+    background-position: relative;
+    background-repeat: repeat;
+}
+
+#snake{
+    font-size: 50px;
+    margin-top: 50%;
+    margin-left: 50%; 
+    height: 75px;
+    position: absolute;
+    visibility: hidden;
+    user-select: none;
+}
+
+#froggy{
+    margin-left: 50%;
+    margin-top: 50%;
+    position: absolute;
+    font-size: 50px;
+    visibility: hidden;
+    user-select: none;
+}
+
+#arrowKeys{
+    height: auto;
+    width: 50%;
+    position: absolute;
+    visibility: visible;
+    user-select: none;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	animation: pulse 1s infinite;  
+}
+
+#resetGame{
+    position: absolute;
+    visibility: hidden;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px black;
+    color: white;
+    background-color: rgb(40, 173, 7);
+    cursor: pointer;
+    margin-top:12%;
+    user-select: none;
+
+}
+
+#gameoverScreen{
+    position: absolute;
+    visibility: hidden;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15%;
+    user-select: none;
+    animation: pulse 1s infinite;
+}
+
+#centeredItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#menuItems{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#settingsWindow{
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10%;
+    border: 3px solid rgb(70, 70, 70);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(40, 173, 7);
+    cursor: pointer;
+    margin-top:10%;
+    user-select: none;
+    width: 50%;
+    height: 50%;
+    visibility: hidden;
+}
+
+#achievementsWindow{
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10%;
+    border: 3px solid rgb(70, 70, 70);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(40, 173, 7);
+    cursor: pointer;
+    margin-top:10%;
+    user-select: none;
+    width: 50%;
+    height: 50%;
+    visibility: hidden;
+}
+
+#mute, #settings, #achievements{
+    visibility: visible;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+#username{
+    bottom: 20%;
+    position: absolute;
+    border: 3px solid rgb(70, 70, 70);
+    padding: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	50% {
+		transform: scale(1);
+		box-shadow: 0 0 0 0px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
+#leaderboard {
+    flex: 5;
+    overflow-y: auto;
+    width: 100%;
+    text-align: center;
+    border-right: 3px solid rgb(70, 70, 70);
+    border-top: 3px solid rgb(70, 70, 70);
+    border-bottom: 3px solid rgb(70, 70, 70);
+    font-weight: bold;
+}
+
+#leaderboard thead th {
+    background-color: rgb(70, 70, 70);;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 2px solid #E7E9EB; 
+}
+
+#leaderboard tbody td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #E7E9EB;
+    color: black;
+    vertical-align: middle;
+    height:15px;
+}
+
+#leaderboard tr:last-child td {
+    border-bottom: none;
+}
+
+#globalStats{
+    flex: 2;
+    overflow-y: auto;
+    width: 100%;
+    border-right: 3px solid rgb(70, 70, 70);
+    border-bottom: 3px solid rgb(70, 70, 70);
+}
+
+#globalStats thead th {
+    background-color: rgb(70, 70, 70);;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 2px solid #E7E9EB; 
+}
+
+#globalStats tbody td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #E7E9EB;
+    color: black;
+    vertical-align: middle;
+    height:20px;
+    font-weight: bold;
+}
+
+#globalStats tr:last-child td {
+    border-bottom: none;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 656px;
+    width: 300px;
+}
+
+#scoreHeader{
+    background-color: rgb(70, 70, 70);;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border: 2px solid #E7E9EB; 
+}
+
+#scoreSection{
+    flex: 1;
+    overflow-y: auto;
+    width: 99%;
+    text-align: center;
+    border-right: 3px solid rgb(70, 70, 70);
+    border-top: 3px solid rgb(70, 70, 70);
+    font-weight: bold;
+}
+
+#score{
+    padding: 8px 10px;
+    color: black;
+    vertical-align: middle;
+    height:15px;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .project-box {
+        width: 90%;
+    }
+}
+
+.project-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    margin-bottom: 20px; /* Space below the box */
+    width: 400px;
+}
+
+.tech-icons img {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    margin-right: 5px;
+}
+
+.github-link {
+    margin-left: auto; /* Pushes the link to the right */
+    text-decoration: none;
+    color: #007bff; /* Bootstrap's link color for reference */
+}
+
+.tooltip-icon {
+    color: #666; /* Dark grey color for the icon */
+    cursor: help; /* Indicates an interactive item */
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="project-box">
+      <div class="tech-icons">
+          <img src="https://boschroder.com/projects/about/images/js.png" alt="JS" title="JS">
+          <img src="https://boschroder.com/projects/about/images/html.png" alt="HTML" title="HTML">
+          <img src="https://boschroder.com/projects/about/images/css.png" alt="CSS" title="CSS">
+      </div>
+      <a href="https://github.com/bodjernisschroder/petprojects/tree/main/secure-password-generator" target="_blank" class="github-link">View on GitHub</a>
+      <i class="fa fa-question-circle tooltip-icon" title="Create a strong password!"></i>
+  </div>
+    
+    <div class="mainbox">
+      <div id="linkIcon">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+        <h2>Secure Password Generator</h2>
+        <p></p>
+        <div class="output"></div>
+
+        <div class="slidecontainer">
+          <label for="passwordLength">Password Length: <span id="length">20</span></label>
+          <input type="range" min="1" max="40" value="20" class="slider" id="passwordLength">
+          
+        </div>
+        <input type="checkbox" id="uppercase" name="case" value="uppercase" checked>
+        <label for="uppercase">Uppercase</label>
+        <input type="checkbox" id="lowercase" name="case" value="lowercase" checked>
+        <label for="lowercase">Lowercase</label><br>
+        <input type="checkbox" id="numbers" name="case" value="numbers" checked>
+        <label for="numbers">Numbers</label>
+        <input type="checkbox" id="special" name="case" value="special" checked>
+        <label for="special">Special Characters</label>
+        <div class="epicButtons">
+          <button id="generateButton">GENERATE PASSWORD</button>
+          <button id="copyButton" onclick="copyText()">COPY TO CLIPBOARD</button>
+
+
+        </div>
+        
+
+    </div>
+ 
+
+	<script src="script.js"></script>
+  </body>
+</html>

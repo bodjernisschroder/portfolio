@@ -1,0 +1,57 @@
+﻿<!-- Global header with logo, login, signup, and a hero section -->
+
+<section class="menu hero-wrap position-relative d-flex align-items-center"
+         style="background-image: url('/images/overlay-bg.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;">
+
+    <!-- Gradient Overlay -->
+    <div class="overlay position-absolute w-100 h-100"></div>
+
+    <!-- Content -->
+    <div class="container position-relative z-1">
+
+        <!-- NavBar -->
+        <div class="container my-2">
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+                <div class="col-md-3 mb-2 mb-md-0">
+                    <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                        <img src="/images/logo-medium.png" class="bi" role="img" height="75" aria-label="Gotorz"> />
+                    </a>
+                </div>
+                <div class="col-md-3 mb-2 mb-md-0 text-end">
+                    <NavLink href="/login" type="button" class="btn btn-lg btn-outline-warning me-2">
+                        Login
+                    </NavLink>
+                    <NavLink href="/signup" type="button" class="btn btn-lg btn-warning">
+                        Sign-up
+                    </NavLink>
+                </div>
+            </header>
+        </div>
+
+        <!-- Hero Section -->
+
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="/images/gotorz-biglogo.svg"
+                     class="d-block mx-lg-auto img-fluid w-100"
+                     alt="Gotorz Logo" loading="lazy">
+            </div>
+            <div class="col-lg-6 text-white">
+                <h1 class="display-6 fw-bold lh-1 mb-3">Travel a lot... at a lower price</h1>
+                <p class="lead">
+                    Your trip with us includes
+                    <span class="fw-bold text-decoration-underline">plane tickets and hotel accommodation.</span><br>
+                    Book your tourist destination now with ease.
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="#search" class="btn btn-warning btn-lg px-4 me-md-2 fw-bold">
+                        Select Your Destination
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

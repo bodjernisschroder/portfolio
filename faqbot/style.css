@@ -1,0 +1,108 @@
+body {
+    background-color: #F2F2F2;
+    font-family: Arial, sans-serif;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    height: 600px;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+}
+
+#chatbox {
+    flex: 1;
+    padding: 10px;
+    padding-left: 50px;
+    border-bottom: 1px solid #ddd;
+    overflow-y: auto;
+    position: relative;
+}
+
+#options {
+    padding: 10px;
+    max-height: 150px; 
+    overflow-y: auto;
+}
+
+.chat-entry {
+    margin-bottom: 10px;
+    clear: both;
+}
+
+.chat-entry p {
+    margin: 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.bot {
+    float: left;
+    position: relative;
+}
+
+.bot p {
+    background: #eee;
+}
+
+.bot::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -45px; /* adjust this value to position the bot image */
+    width: 40px;
+    height: 40px;
+    background-image: url('bot_image.png');
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.user {
+    float: right;
+}
+
+.user p {
+    background: #007bff;
+    color: #fff;
+}
+
+.option {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+@keyframes typing {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .typing-indicator {
+    display: inline-block;
+    margin-left: 10px;
+    color: #888;
+  }
+  
+  .typing-indicator span {
+    animation-name: typing;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+  }
+  
+  .typing-indicator span:nth-child(2) {
+    animation-delay: .2s;
+  }
+  
+  .typing-indicator span:nth-child(3) {
+    animation-delay: .4s;
+  }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+  <div class="project-card">
+  <div class="project-header">
+    <h3>Calculator</h3>
+    <a href="https://github.com/bodjernisschroder/petprojects/tree/main/calculator" 
+      target="_blank" 
+      class="github-btn">
+      <i class="fa fa-github"></i> GitHub
+    </a>  </div>
+
+  <div class="tech-stack">
+    <span>JS</span>
+    <span>HTML</span>
+    <span>CSS</span>
+  </div>
+
+  <p class="project-desc">
+    A simple calculator app that supports basic arithmetic operations like addition, subtraction, multiplication, and division.
+  </p>
+</div>
+
+      <div id="outerBox">
+
+        <div id="display"></div>
+
+        <div id="buttons">
+          <div class="row">
+            <button class="button" id="clear" onclick="clearDisplay()">C</button>
+            <button class="button" id="backspace" onclick="backspace()"><i class="fa fa-arrow-left"></i></button>
+            <button class="button" id="divide" onclick="divide()">/</button>
+          </div>
+        <div class="row">
+            <button class="button" id="seven" onclick="addDigit(7)">7</button>
+            <button class="button" id="eight" onclick="addDigit(8)">8</button>
+            <button class="button" id="nine" onclick="addDigit(9)">9</button>
+            <button class="button" id="multiply" onclick="multiply()">*</button>
+            
+        </div>
+        <div class="row">
+            <button class="button" id="four" onclick="addDigit(4)">4</button>
+            <button class="button" id="five" onclick="addDigit(5)">5</button>
+            <button class="button" id="six" onclick="addDigit(6)">6</button>
+            <button class="button" id="subtract" onclick="subtract()">-</button>
+            
+        </div>
+        <div class="row">
+            <button class="button" id="one" onclick="addDigit(1)">1</button>
+            <button class="button" id="two" onclick="addDigit(2)">2</button>
+            <button class="button" id="three" onclick="addDigit(3)">3</button>
+            <button class="button" id="add" onclick="add()">+</button>
+            
+        </div>
+        <div class="row">
+            <button class="button" id="smiley" onclick="smiley()">:D</button>
+            <button class="button" id="zero" onclick="addDigit(0)">0</button>
+            <button class="button" id="decimal" onclick="period()">.</button>
+            <button class="button" id="equals" onclick="equals()">=</button>
+            
+      </div>
+      </div>
+    
+ 
+
+	<script src="script.js"></script>
+  </body>
+</html>

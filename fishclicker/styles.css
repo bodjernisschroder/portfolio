@@ -1,0 +1,52 @@
+body{
+    user-select: none;
+}
+
+.container {
+    width: 600px;
+    display: flex; 
+    justify-content: space-around; 
+    align-items: flex-start; 
+}
+
+.column {
+    width: 300px; 
+    margin: 15px;
+}
+
+pre {
+    font-family: monospace;
+    white-space: pre;
+}
+
+.statBox{
+    border: 1px solid black;
+}
+
+.upgradeBox{
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 2px;
+    background-color:#dbdbdb;
+    color:#a8a8a8;
+}
+
+.hidden{
+    display: none;
+}
+.button{
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.disabled-button {
+    opacity: 0.25;
+    background-color: #ccc;
+    pointer-events: none;
+    user-select: none;
+    color: #666;
+    touch-action: manipulation;
+}
+
+
+

@@ -1,0 +1,199 @@
+﻿
+
+<style>
+
+    /* Overall page reset to ensure full-bleed */
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Profile Card Container */
+    .profile-card {
+        background-color: #F1F9FE; /* Light blue background */
+        border-radius: 12px;
+        border: 3px solid #fff;
+        text-align: center;
+        padding: 20px;
+        transition: transform 0.3s ease;
+    }
+
+        .profile-card:hover {
+            transform: scale(1.02);
+            background-color: #fff;
+            
+        }
+
+    /* Circular Photo */
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto; /* center horizontally */
+        display: block;
+        object-fit: cover;
+        border: 3px solid transparent;
+        transition: border 0.3s ease;
+    }
+
+    .profile-card:hover .profile-photo {
+        /* Dotted border on hover */
+        border: 3px dashed #FFA500;
+
+    }
+
+    .profile-card:hover .profile-role {
+        background-color: #Fefefe;
+    }
+
+    /* Name & Role */
+    .profile-name {
+        margin-top: 15px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .profile-role {
+        display: inline-block;
+        margin-top: 8px;
+        background-color: #fff;
+        color: #333;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-weight: 500;
+    }
+
+
+
+    #teamMembers {
+        background-color: #f4fafe;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        
+    }
+
+    /* Styling related to the team intro */
+    
+    .team-intro {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        background-color: #f4fafe; /* Light background color */
+        padding: 3rem 0; /* Top & bottom spacing */
+        text-align: center; /* Center all text inside */
+    }
+
+    /* Small subtitle text in gold */
+    .team-subtitle {
+        color: #FFA500; /* Gold-ish color */
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin: 0 0 0.5rem 0; /* Bottom spacing before main heading */
+    }
+
+    /* Larger main heading text */
+    .team-title {
+        font-size: 2rem;
+        color: #333; /* Dark text */
+        margin: 0;
+        font-weight: 700;
+    }
+    
+
+</style>
+
+@* Team intro *@
+
+<div class="team-intro">
+    <div class="container text-center">
+        <p class="team-subtitle">Gotorz Team</p>
+        <h2 class="team-title">Let's meet with our team members</h2>
+    </div>
+</div>
+
+<section id="teamMembers" class="py-4">
+    <div class="container-fluid p-4">
+        <div class="row g-3">
+
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-lg-2">
+                <div class="profile-card">
+                    <img src="./images/teammembers/marwan.webp"
+                         alt="Marwan"
+                         class="profile-photo" />
+                    <div class="profile-name">Marwan Soboh</div>
+                    <div class="profile-role">CEO</div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-lg-2">
+                <div class="profile-card">
+                    <img src="./images/teammembers/samira.webp"
+                         alt="Samira"
+                         class="profile-photo" />
+                    <div class="profile-name">Samira</div>
+                    <div class="profile-role">Sales</div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-lg-2">
+                <div class="profile-card">
+                    <img src="./images/teammembers/budor.webp"
+                         alt="Budor"
+                         class="profile-photo" />
+                    <div class="profile-name">Budor</div>
+                    <div class="profile-role">Reservations</div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-sm-6 col-lg-2">
+                <div class="profile-card">
+                    <img src="./images/teammembers/heba.webp"
+                         alt="Heba"
+                         class="profile-photo" />
+                    <div class="profile-name">Heba</div>
+                    <div class="profile-role">Sales</div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-12 col-sm-6 col-lg-2">
+                <div class="profile-card">
+                    <img src="./images/teammembers/fatma.webp"
+                         alt="Fatma"
+                         class="profile-photo" />
+                    <div class="profile-name">Fatma</div>
+                    <div class="profile-role">Sales</div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-12 col-sm-6 col-lg-2">
+                <div class="profile-card">
+                    <img src="./images/teammembers/eman.webp"
+                         alt="Eman"
+                         class="profile-photo" />
+                    <div class="profile-name">Eman</div>
+                    <div class="profile-role">Sales</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+@code {
+
+}

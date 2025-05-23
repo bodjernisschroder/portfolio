@@ -1,0 +1,93 @@
+@TravelBridgeAPI_HostAddress = https://localhost:7144
+
+@location=Copenhagen
+
+GET {{TravelBridgeAPI_HostAddress}}/api/flight/SearchLocations?location={{location}}
+
+###
+
+@token=d6a1f_H4sIAAAAAAAA_y2QbW-yMBSGf437NAotL5UlzROnhKGALyAb-9LUCsjmxNAuCL9-VZ709NzXfZJz2pyTlFfxouvlua5OUmi_AlSNbComC8CbH71sVTo0zXd9qXRWt_rrOlp4oWlEsxxNl_tYh88QPxu6pg5_yf8V7FqDFpTE-0i9XTwLaboLNnSzC-ZB7D8VN6mJlpOn-lAARjTXdUcUnEBv5f83LXGAPXUw8lP8KPFGEgvYWfBpxNi38rHYEn_zhpfjiCOJ5t1tPcxElAq0TTq0TUUf910fD0Luz4EIs2WyHrL3JGu69Isb-32Oo_S4SpPuFhvyLVx4ZmJwca9lg-jCuWEmfTeoK6PtxFyoeDxVcPVbACzswodvmCB4ikbmkqDpiEdJkjR2A2e0kpgmcsaWG4Gmg1ygslqBKM4Fl3VzWRU9cTyEsa2pHbMe2VpOHc-GrqbW_Xu5-wmaQ-vCv11D0cScqaioAQylJ6VQKaPIvI9WeKDWXTi1PpUcqQ2nBVdUUM1mTEFJLZVrCgF89H7R4F3JQFn507bXPyOPZSUiAgAA
+@curencyCode=EUR
+GET {{TravelBridgeAPI_HostAddress}}/api/flight/SearchFlightDetails?token={{token}}&curencyCode={{curencyCode}}
+
+###
+
+@from=BOM.AIRPORT
+@to=DEL.AIRPORT
+@departure=2025-05-20
+@returnFlight=2025-05-25
+@cabinClass=ECONOMY
+@curencyCode=EUR
+GET {{TravelBridgeAPI_HostAddress}}/api/flight/FlightMinPrice?from={{from}}&to={{to}}&departure={{departure}}&returnFlight={{returnFlight}}&cabinClass={{cabinClass}}&curencyCode={{curencyCode}}
+
+###
+
+@departure=LHR.AIRPORT
+@arrival=JFK.AIRPORT
+@date=2025-04-15
+@sort=CHEAPEST
+@cabinClass=ECONOMY
+@currency_code=USD
+GET {{TravelBridgeAPI_HostAddress}}/api/flight/SearchDirectFlights?departure={{departure}}&arrival={{arrival}}&date={{date}}
+
+###
+
+@location=Copenhagen
+GET {{TravelBridgeAPI_HostAddress}}/api/hotel/SearchHotelDestination?location={{location}}
+
+###
+
+@dest_id=929
+@search_type=CITY
+
+@arrival=2025-05-20
+@destination=2025-05-25
+@adults=2
+@children=1,5
+@units=metric
+@tempUnit=c
+@language=en-us
+@currencyCode=EUR
+GET {{TravelBridgeAPI_HostAddress}}/api/hotel/SearchHotels?dest_id={{dest_id}}&search_type={{search_type}}&arrival={{arrival}}&departure={{departure}}&adults={{adults}}&children={{children}}&units={{units}}&tempUnit={{tempUnit}}&language={{language}}&currencyCode={{currencyCode}}&location={{location}}
+
+###
+
+@hotel_id=5955189
+@language=en-us
+GET {{TravelBridgeAPI_HostAddress}}/api/hotel/SearchReviewScore?hotel_id={{hotel_id}}&language={{language}}
+
+###
+
+@hotel_id=5218600
+@min_date=2025-05-20
+@max_date=2025-05-25
+@rooms=1
+@adults=2
+@currencyCode=EUR
+
+GET {{TravelBridgeAPI_HostAddress}}/api/hotel/SearchRoomAvailability?hotel_id={{hotel_id}}&min_date={{min_date}}&max_date={{max_date}}&currencyCode={{currencyCode}}
+
+###
+
+
+@hotel_id = 5218600
+GET {{TravelBridgeAPI_HostAddress}}/api/hotel/photos?hotelId={{hotel_id}}
+
+###
+
+@hotel_id = 5955189
+@arrivalDate = 2025-05-20
+@departureDate = 2025-05-25
+@adults = 2
+@childrenAge = 5,10
+@roomQty = 1
+@units = metric
+@temperatureUnit = C
+@languageCode = en-us
+@currencyCode = EUR
+
+GET {{TravelBridgeAPI_HostAddress}}/api/hotel/SearchHotelDetails?hotelId={{hotelId}}&arrivalDate={{arrivalDate}}&departureDate={{departureDate}}&adults={{adults}}&childrenAge={{childrenAge}}&roomQty={{roomQty}}&units={{units}}&temperatureUnit={{temperatureUnit}}&languageCode={{languageCode}}&currencyCode={{currencyCode}}
+
+###
+
+

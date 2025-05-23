@@ -1,0 +1,23 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Gotorz\\Gotorz.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Gotorz.Client\\Gotorz.Client.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AuthAndUserAPI\\AuthAndUserAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "TravelBridgeAPI\\TravelBridgeAPI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,162 @@
+﻿@using System.ComponentModel.DataAnnotations
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<style>
+    .search-container {
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #072f62; 
+    padding: 20px;
+    border-radius: 15px;
+    }
+
+    .search-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .search-input {
+    height: 60px; 
+    padding-left: 20px;
+    font-size: 1.1rem; 
+    border: none;
+    flex: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #888;
+    }
+
+    .search-button {
+    height: 60px; 
+    width: 100%;
+    padding: 0 25px;
+    border-radius: 3px;
+    font-weight: bold;
+    background-color: #ffcc00;
+    color: #072f62;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    }
+
+    .search-button:hover {
+    background-color: #e6b800;
+    }
+
+    #searchLabel {
+    font-size: 1.6rem;
+    color: #fff; 
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+    display: block;
+    }
+    .full-width-button {
+    grid-column: span 2;
+
+    }
+
+    .form-label {
+        color: #fff; 
+        font-weight: 700;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="search-container">
+                <label id="searchLabel" for="destinationInput" class="form-label">Find Your Next Travel Destination</label>
+
+                <EditForm Model="@searchModel" class="search-form" OnValidSubmit="HandleSubmit" FormName="searchForm">
+                    <DataAnnotationsValidator />
+                    <div>
+                        <label for="fromDestination" class="form-label">From Destination</label>
+                        <InputText type="text"
+                                   id="fromDestination"
+                                   class="form-control search-input"
+                                   placeholder="Enter Your Location"
+                                   @bind-Value="searchModel.FromDestination" />
+                    </div>
+
+                    
+                    <div>
+                        <label for="toDestinationInput" class="form-label">To Destination</label>
+                        <InputText type="text"
+                                   id="toDestinationInput"
+                                   class="form-control search-input"
+                                   placeholder="Destination (city, country etc)"
+                                   @bind-Value="searchModel.ToDestination" />
+                    </div>
+
+                    
+                    <div>
+                        <label for="departureDate" class="form-label">Departure Date</label>
+                        <InputDate id="departureDate"
+                                   class="form-control search-input"
+                                   @bind-Value="searchModel.DepartureDate" />
+                    </div>
+
+                    
+                    <div>
+                        <label for="returnDate" class="form-label">Return Date</label>
+                        <InputDate id="returnDate"
+                                   class="form-control search-input"
+                                   @bind-Value="searchModel.ReturnDate" />
+                    </div>
+
+
+                    <div class="full-width-button">
+                        <button type="submit" class="search-button">Search</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    //Method that redirects to the search results page using the query from the form input field
+    private void HandleSubmit()
+    {
+        if (!string.IsNullOrWhiteSpace(searchModel.ToDestination) &&
+            !string.IsNullOrWhiteSpace(searchModel.FromDestination))
+        {
+            var from = Uri.EscapeDataString(searchModel.FromDestination);
+            var to = Uri.EscapeDataString(searchModel.ToDestination);
+            var departure = searchModel.DepartureDate.ToString("yyyy-MM-dd");
+            var returnDate = searchModel.ReturnDate.ToString("yyyy-MM-dd");
+
+            NavigationManager.NavigateTo($"/searchresults?from={from}&to={to}&departure={departure}&returnFlight={returnDate}");
+        }
+    }
+
+
+    //Sample model which is required for EditForm - Delete if necessary
+    public class SearchFormModel
+    {
+        [Required]
+        public string ToDestination { get; set; }
+        [Required]
+        public string FromDestination { get; set; }
+        [Required]
+        public DateTime DepartureDate { get; set; } = DateTime.Now;
+        [Required]
+        public DateTime ReturnDate { get; set; } = DateTime.Now.AddDays(7);
+    }
+
+    private SearchFormModel searchModel = new();
+}
+    

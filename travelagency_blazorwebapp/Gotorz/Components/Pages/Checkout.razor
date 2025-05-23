@@ -1,0 +1,88 @@
+﻿@page "/checkout"
+@using Gotorz.Components.Layout
+@layout MinimalLayout
+
+<div class="d-flex flex-column min-vh-100 w-100">
+    <!-- Top Section: Centered Return Link -->
+    <div class="p-3 text-center w-100">
+        <a href="/" class="fw-bold">⬅️ Return to homepage</a>
+    </div>
+
+    <div class="flex-grow-1">
+        <div class="container py-5">
+            <h2 class="mb-4">Checkout</h2>
+
+            <div class="row">
+                <!-- Package Summary -->
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            Your Travel Package
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Destination: <strong> @package.Country</strong></h5>
+                            <p class="card-text mb-1"><strong>Hotel:</strong> @package.Hotel</p>
+                            <p class="card-text mb-1"><strong>Flight:</strong> @package.Flight</p>
+                            <p class="card-text mb-1"><strong>Dates:</strong> @package.Date</p>
+                            <p class="card-text"><strong>Guests:</strong> @package.Guests</p>
+                        </div>
+                    </div>
+
+                    <!-- Price Breakdown -->
+                    <div class="card">
+                        <div class="card-header bg-secondary text-white">
+                            Price Summary
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Flight</span>
+                                <span>$@package.FlightPrice</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Hotel</span>
+                                <span>$@package.HotelPrice</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-top pt-2">
+                                <strong>Total</strong>
+                                <strong>$@(package.FlightPrice + package.HotelPrice)</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Action -->
+                <div class="col-md-4">
+                    <div class="card p-4">
+                        <h4 class="mb-3">Ready to book?</h4>
+                        <p>Click below to continue to secure payment with Stripe.</p>
+                        <button class="btn btn-success btn-lg w-100" disabled>
+                            Proceed to Payment
+                        </button>
+                        <small class="text-muted d-block mt-2">* Stripe integration coming soon</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Section: Full-Width Footer -->
+    <footer class="w-100">
+        <Footer />
+    </footer>
+</div>
+
+@code{
+    PackageSummary package = new PackageSummary();
+
+    public class PackageSummary
+    {
+        public string Country { get; set; } = "Paris, France";
+        public string Hotel { get; set; } = "Hotel Derp, 5 nights";
+        public string Flight { get; set; } = "Round-trip from JFK, Direct";
+        public string Date { get; set; } = "June 10th - June 15th";
+        public int Guests { get; set; } = 2;
+        public int FlightPrice { get; set; } = 600;
+        public int HotelPrice { get; set; } = 750;
+    }
+}
+

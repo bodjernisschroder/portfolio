@@ -1,0 +1,137 @@
+.mainbox {
+
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 25px;
+    width: 500px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    text-align: center;
+    font-family: "montserrat", sans-serif;  
+}
+
+#linkIcon{
+    width: 50px;
+    height: 50px;
+
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; 
+    background: #2776dd;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #2776dd;
+    cursor: pointer;
+  }
+
+.output{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    height: 35px;
+    border-radius: 5px;
+    border-left: 5px solid #2776dd;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    background-color: #F4F4F4;
+    color: black;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    font-family: "montserrat", sans-serif;  
+
+}
+#generateButton, #copyButton{
+    background-color: #2776dd;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 0px;
+    margin-top: 15px;
+    font-weight: bold;
+    width:48%;
+    cursor: pointer;
+    font-family: "montserrat", sans-serif;  
+}
+
+.epicButtons{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    
+}
+
+#linkIcon i {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .project-box {
+        width: 90%;
+    }
+}
+
+.project-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    margin-bottom: 20px; /* Space below the box */
+    width: 300px;
+}
+
+.tech-icons img {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    margin-right: 5px;
+}
+
+.github-link {
+    margin-left: auto; /* Pushes the link to the right */
+    text-decoration: none;
+    color: #007bff; /* Bootstrap's link color for reference */
+}
+
+.tooltip-icon {
+    color: #666; /* Dark grey color for the icon */
+    cursor: help; /* Indicates an interactive item */
+}

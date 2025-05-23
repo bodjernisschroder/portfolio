@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Froggy Eater</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+
+    <div class="project-box">
+      <div class="tech-icons">
+          <img src="https://boschroder.com/projects/about/images/js.png" alt="JS" title="JS">
+          <img src="https://boschroder.com/projects/about/images/html.png" alt="HTML" title="HTML">
+          <img src="https://boschroder.com/projects/about/images/css.png" alt="CSS" title="CSS">
+          <img src="https://boschroder.com/projects/about/images/mysql.png" alt="mysql" title="mysql">
+          <img src="https://boschroder.com/projects/about/images/php.png" alt="php" title="php">
+        </div>
+      <a href="https://github.com/bodjernisschroder/petprojects/tree/main/froggy-catcher" target="_blank" class="github-link">View on GitHub</a>
+      <i class="fa fa-question-circle tooltip-icon" title="My first attempt at a small browser game. I made this for my son Julius when he was born, right around the 3 month mark of my JavaScript learning journey. I'm very proud of this one, since it was the first complete thing I made, and it made my son laugh all the way from the bottom of his belly. All sounds in the game are recordings of him by the way!"></i>
+  </div>
+
+    <div id="outerBox">
+      <div id="gamescreen">
+          <div id="centeredItems">
+            <div id="menuItems">
+
+              <div id="mute">🔊</div>
+            </div>
+            <input id="username" placeholder="Enter your name to begin"></input>
+            <div id="settingsWindow">SETTINGS<br>COMING SOON</div>
+            <div id="achievementsWindow">ACHIEVEMENTS<br>COMING SOON</div>
+            <div id="gameoverScreen"></div>
+            <button id="resetGame">RESET GAME</button>
+            <img src="https://boschroder.com/projects/froggy-catcher/images/arrows.png" id="arrowKeys">
+          </div>
+        <img src="https://boschroder.com/projects/froggy-catcher/images/julius-eat2.png" id="snake">
+        <div id="froggy">🐸</div>
+      </div>
+      <div id="sidebar">
+        <div id="scoreSection">
+          <div id="scoreHeader">Frogs Collected</div>
+          <div id="score">🐸 0</div>
+        </div>
+        <table id="leaderboard">
+
+          <thead>
+              <tr>
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Score</th>
+              </tr>
+          </thead>
+  
+
+          <tbody>
+              
+              
+          </tbody>
+      </table>
+
+        <table id="globalStats">
+
+          <thead>
+              <tr>
+                  <th>Global Stats</th>
+
+              </tr>
+          </thead>
+  
+
+          <tbody>
+              
+              
+          </tbody>
+      </table>
+      </div>
+    </div>
+    
+    
+
+
+	<script src="script.js"></script>
+  </body>
+</html>

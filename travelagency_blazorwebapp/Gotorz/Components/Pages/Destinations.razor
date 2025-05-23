@@ -1,0 +1,185 @@
+﻿@page "/destinations"
+@using Microsoft.AspNetCore.Components.Web
+
+<html>
+    <head>
+        
+    </head>
+    <body>
+        
+<style>
+    /* Remove default body margins */
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Card styling */
+    .destination-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #fff;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 220px; /* fixed height for uniformity */
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .destination-card:hover .card-img {
+        transform: scale(1.05);
+    }
+
+    .destination-label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #1E90FF;
+        color: white;
+        padding: 4px 10px;
+        font-weight: bold;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        z-index: 2;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        color: white;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .destination-card:hover .overlay {
+        opacity: 1;
+    }
+
+    .overlay-text {
+        font-size: 1rem;
+        text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+        margin: 0;
+    }
+
+
+    /* Styling related to the intro text for destinations */
+        .destinations-intro {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding: 3rem 0; /* Top & bottom spacing */
+            text-align: center; /* Center all text inside */
+        }
+
+        /* Small subtitle text in gold */
+        .destinations-subtitle {
+            color: #FFA500; /* Gold-ish color */
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 0 0 0.5rem 0; /* Bottom spacing before main heading */
+        }
+
+        /* Larger main heading text */
+        .destinations-title {
+            font-size: 2rem;
+            color: #333; /* Dark text */
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .destination-section {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            
+        }
+
+    
+</style>
+
+
+<section class="destinations-section py-5 m-0"
+             style="background-image: url('/images/vec-places-bg.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;">
+        
+    <div class="destinations-intro">
+        <div class="container text-center">
+            <p class="destinations-subtitle">Gotorz Provided Places</p>
+            <h2 class="destinations-title">Best of the Best Travel Destinations</h2>
+        </div>
+    </div>
+    <!-- Full-width static layout for 4 cards -->
+    <div class="container-fluid p-0 m-0">
+        <!-- Row with gutters for spacing -->
+        <div class="row g-3 m-0 w-100">
+            <!-- Card 1 -->
+            <div class="col-md-3 col-sm-12">
+                <div class="destination-card">
+                    <img src="images/destinations/alanya.jpg" class="card-img" alt="Alanya">
+                    <div class="destination-label">Alanya</div>
+                    <div class="overlay">
+                        <p class="overlay-text">Alanya is a charming Turkish resort with pristine beaches, a historic castle overlooking the Mediterranean, vibrant nightlife, and delicious local cuisine that blends tradition with modern flair.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-3 col-sm-12">
+                <div class="destination-card">
+                    <img src="images/destinations/cairo.png" class="card-img" alt="Cairo">
+                    <div class="destination-label">Cairo</div>
+                    <div class="overlay">
+                        <p class="overlay-text">Cairo, Egypt’s sprawling capital, enthralls travelers with its ancient pyramids, lively markets, and rich cultural tapestry. Explore the timeless history and vibrant spirit of this majestic city.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-3 col-sm-12">
+                <div class="destination-card">
+                    <img src="images/destinations/istanbul.jpg" class="card-img" alt="Istanbul">
+                    <div class="destination-label">Istanbul</div>
+                    <div class="overlay">
+                        <p class="overlay-text">Istanbul, straddling Europe and Asia, captivates visitors with its rich history, stunning mosques, bustling bazaars, and vibrant street life—a fusion of ancient charm and modern energy.l</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-md-3 col-sm-12">
+                <div class="destination-card">
+                    <img src="images/destinations/malta.jpg" class="card-img" alt="Malta">
+                    <div class="destination-label">Malta</div>
+                    <div class="overlay">
+                        <p class="overlay-text">Malta boasts a stunning Mediterranean setting with crystal-clear waters, ancient fortresses, and charming villages. Discover a blend of history, culture, and beautiful landscapes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </body>
+</html>
+
+
+
+
+
+@code {
+   
+   
+}

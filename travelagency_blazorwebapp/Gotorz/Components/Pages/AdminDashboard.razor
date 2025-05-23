@@ -1,0 +1,143 @@
+﻿@page "/admin-dashboard"
+@layout DashboardLayout 
+@using Gotorz.Components.Layout
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject JwtAuthenticationStateProvider JwtAuthProvider
+
+@rendermode InteractiveServer
+
+<CascadingAuthenticationState>
+    <AuthorizeView Roles="Admin">
+        <Authorized>
+
+        @* Content that is shown to authorized users with the role set to Admin *@
+        <div class="d-flex" style="min-height: 100vh;">
+
+            <!-- Sidebar -->
+            <nav class="bg-dark text-white p-3" style="width: 250px;">
+                <h4 class="fw-bold mb-4" style="color: #f8b500;">Gotorz</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <NavLink class="nav-link text-white" href="/dashboard" activeclassname="fw-bold text-warning">
+                            🏠 Dashboard
+                        </NavLink>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <NavLink class="nav-link text-white" href="/orders" activeclassname="fw-bold text-warning">
+                            📦 Orders
+                        </NavLink>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <NavLink class="nav-link text-white" href="/listings" activeclassname="fw-bold text-warning">
+                            📋 Listings
+                        </NavLink>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <NavLink class="nav-link text-white" href="/messages" activeclassname="fw-bold text-warning">
+                            💬 Messages
+                        </NavLink>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Content Wrapper -->
+            <div class="flex-grow-1 d-flex flex-column">
+
+                <!-- Topbar -->
+                <header class="d-flex justify-content-between align-items-center p-3 shadow-sm bg-white">
+                    <h5 class="m-0">Admin Dashboard</h5>
+                    <div class="d-flex align-items-center gap-3">
+                        <span>Hello, Alex 👋</span>
+                        <button class="btn btn-outline-secondary btn-sm" @onclick="Logout">Logout</button>
+                    </div>
+                </header>
+
+                <!-- Main content -->
+                <main class="flex-grow-1 p-4" style="background-color: #f9f9f9;">
+                    <div class="container-fluid mt-4">
+                        <h1 class="mb-4 fw-bold">Welcome back, @user.Identity.Name 👋</h1>
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="p-4 bg-white rounded shadow-sm">
+                                    <h4 class="mb-3">Manage Users</h4>
+                                    <p>This is where all registered users will appear.</p>
+                                    <ul>
+                                        @* The list should be placed here *@
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        </Authorized>
+
+        @* Content that is shown to visitors without an authorized role *@
+        <NotAuthorized>
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <h2 class="text-danger">
+                ❌ You are not authorized to view this page.
+            </h2>
+        </div>
+            
+        </NotAuthorized>
+    </AuthorizeView>
+</CascadingAuthenticationState>
+
+@code {
+    private ClaimsPrincipal user = new ClaimsPrincipal(new ClaimsIdentity());
+    private bool authChecked = false;
+    private bool initialized = false;
+
+    // Method that is being called after component has rendered 
+    // and initializes user auth state
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !initialized)
+        {
+            initialized = true;
+
+            // Subscribe to auth changes
+            AuthenticationStateProvider.AuthenticationStateChanged += async (task) =>
+            {
+                var state = await task;
+                user = state.User;
+                authChecked = true;
+
+                Console.WriteLine("🎯 AuthenticationStateChanged fired:");
+                Console.WriteLine($"👤 IsAuthenticated = {user.Identity?.IsAuthenticated}");
+                Console.WriteLine($"📛 Name = {user.Identity?.Name}");
+
+                StateHasChanged();
+            };
+
+            // Get initial state (after JSInterop is available)
+            var currentState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            user = currentState.User;
+            authChecked = true;
+
+            Console.WriteLine("🚀 Initial Auth State:");
+            Console.WriteLine($"👤 IsAuthenticated = {user.Identity?.IsAuthenticated}");
+            Console.WriteLine($"📛 Name = {user.Identity?.Name}");
+
+            StateHasChanged();
+        }
+    }
+
+    // Logs out the current user by clearing the JWT from sessionStorage,
+    // calls the Logout method from the server JWTAuthenticationStateProvider,
+    // and triggers a redirect to the login screen
+    private async Task Logout()
+    {
+        Console.WriteLine("🚪 Logout started...");
+        await JwtAuthProvider.LogoutAsync();
+        Console.WriteLine("✅ Logout complete, navigating to login");
+            
+        NavigationManager.NavigateTo("/login", forceLoad: true);
+    }
+}
