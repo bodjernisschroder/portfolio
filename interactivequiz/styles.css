@@ -1,44 +1,87 @@
+body {
+  
+  background: #F2F2F2;
+  padding: 20px;
+}
 #box{
     background-color: white;
-    margin: 15px;
     height: auto;
     width: 100%;
     max-width: 750px;
-    box-shadow: 0px 0px 5px 1px grey;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     padding:5px;
     padding-top: 15px;
     padding-bottom: 15px;
     border-radius: 5px;
 }
 
-.project-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
-    margin-bottom: 20px; /* Space below the box */
-    width: 400px;
+.project-card {
+ font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 30px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.tech-icons img {
-    width: 24px; /* Adjust size as needed */
-    height: 24px;
-    margin-right: 5px;
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
-.github-link {
-    margin-left: auto; /* Pushes the link to the right */
-    text-decoration: none;
-    color: #007bff; /* Bootstrap's link color for reference */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
-.tooltip-icon {
-    color: #666; /* Dark grey color for the icon */
-    cursor: help; /* Indicates an interactive item */
+.project-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.github-btn {
+  background: #007bff;
+  color: #fff;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.github-btn:hover {
+  background: #005fcc;
+}
+
+.tech-stack {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.tech-stack span {
+  background: #e9ecef;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
 }
 
 #section1{
@@ -165,7 +208,7 @@
 }
 
 #leaderboard {
-    margin: 15px;
+    margin: 5px;
     width: 100%;
     text-align: center;
     overflow-x: auto;

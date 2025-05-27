@@ -12,7 +12,74 @@
     background-position: relative;
     background-repeat: repeat;
 }
+.project-card {
+    font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 30px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
 
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.project-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.github-btn {
+  background: #007bff;
+  color: #fff;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.github-btn:hover {
+  background: #005fcc;
+}
+
+.tech-stack {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.tech-stack span {
+  background: #e9ecef;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
 #snake{
     font-size: 50px;
     margin-top: 50%;
